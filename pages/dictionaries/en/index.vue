@@ -18,7 +18,7 @@ const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
       <li
         v-for="entry of entries.filter((item: string) => item.startsWith(alphabet.toLowerCase()))"
       >
-        <NuxtLink :to="`definitions/en/entries/${entry}`">{{ entry }}</NuxtLink>
+        <NuxtLink :to="`en/entries/${entry}`">{{ entry }}</NuxtLink>
       </li>
     </ul>
   </section>
