@@ -1,8 +1,5 @@
 <script setup lang="ts">
-// @ts-ignore
-const {
-  public: { entries },
-}: any = useRuntimeConfig();
+const { data: entries } = await useFetch('/api/entries');
 const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 </script>
 <template>
@@ -16,7 +13,7 @@ const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     <hr />
     <ul class="list-disc mb-12">
       <li
-        v-for="entry of entries.filter((item: string) => item.startsWith(alphabet.toLowerCase()))"
+        v-for="entry of entries?.filter((item: string) => item.startsWith(alphabet.toLowerCase()))"
       >
         <NuxtLink :to="`en/entries/${entry}`">{{ entry }}</NuxtLink>
       </li>

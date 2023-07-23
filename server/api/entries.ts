@@ -1,9 +1,10 @@
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
-import { uniq } from 'lodash';
+// @ts-ignore
+import _ from 'lodash';
 
-export function getEntries() {
-  const DICTIONARY_PATH = join(process.cwd(), '..', 'node_modules/english-dictionary');
+export default defineEventHandler((event) => {
+  const DICTIONARY_PATH = join(process.cwd(), 'node_modules/english-dictionary');
   const indexesFiles = readdirSync(DICTIONARY_PATH).filter((item) => item.endsWith('.index.csv'));
   const words = new Map<string, boolean>();
   for (const indexesFile of indexesFiles) {
@@ -13,5 +14,5 @@ export function getEntries() {
     }
   }
 
-  return uniq([...words.keys()].map((word) => word.split('').slice(0, 2).join('')));
-}
+  return _.uniq([...words.keys()].map((word) => word.split('').slice(0, 2).join('')));
+});

@@ -8,14 +8,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-        with:
-          submodules: recursive
       - uses: actions/setup-node@master
         with:
           node-version: 18
       - run: npm ci
+      - shell: bash
+        run: git submodule add -f https://github.com/open-dictionary/english-dictionary.git node_modules/english-dictionary
       - run: npm run generate
-
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
