@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { entries } from './utils/entries';
+import { getEntries } from './utils/entries';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     apiSecret: '',
     // Keys within public, will be also exposed to the client-side
     public: {
-      entries,
+      entries: getEntries(),
     },
   },
   app: {
