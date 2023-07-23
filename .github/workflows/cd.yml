@@ -8,6 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
+        with:
+          submodules: true
       - uses: actions/setup-node@master
         with:
           node-version: 18
