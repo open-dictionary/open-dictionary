@@ -1,1 +1,0 @@
-import{_ as c,c as s,d as e,a as o,o as t}from"./entry.92206bef.js";const a={},n=o("b",null,"Docs",-1);function r(_,d){return t(),s("h1",null,[e("This is the "),n,e(" page")])}const f=c(a,[["render",r]]);export{f as default};
