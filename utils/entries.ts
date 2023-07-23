@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { uniq } from 'lodash';
 
-const DICTIONARY_PATH = join(process.cwd(), 'node_modules/english-dictionary');
+const DICTIONARY_PATH = join(__dirname, '..', 'node_modules/english-dictionary');
 const indexesFiles = readdirSync(DICTIONARY_PATH).filter((item) => item.endsWith('.index.csv'));
 const words = new Map<string, boolean>();
 for (const indexesFile of indexesFiles) {
