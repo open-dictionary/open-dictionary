@@ -1,13 +1,13 @@
 <template>
   <header class="shadow-sm bg-white">
-    <nav class="container mx-auto p-4 flex justify-between">
-      <NuxtLink to="/" class="font-bold font-serift">Open Dictionary</NuxtLink>
+    <nav class="container mx-auto p-4 flex justify-between items-center ">
+      <NuxtLink to="/" class="font-serif brand text-4xl">Open Dictionary</NuxtLink>
       <ul class="flex gap-4">
         <li>
-          <NuxtLink to="/" class="btn flex">
-            <i class="material-icons">home</i>
-            Home
-          </NuxtLink>
+          <NuxtLink to="/">Home</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/dictionaries/en">Words</NuxtLink>
         </li>
         <li>
           <NuxtLink to="/docs">Docs</NuxtLink>
@@ -18,12 +18,19 @@
   <main class="container mx-auto p-4">
     <slot />
   </main>
-  <footer class="container mx-auto p-4">
-    All rights are not reserved!
+  <hr />
+  <footer class="shadow-sm bg-white">
+    <div class="container mx-auto p-4">
+      <div class="text-4xl font-serif">Open Dictionary</div>
+      <br>
+
+      All rights are not reserved!
+    </div>
   </footer>
 </template>
 <style lang="scss">
-.router-link-exact-active {
-  color: #12b488;
+.router-link-exact-active,
+.brand {
+  color: #be123c;
 }
 </style>
