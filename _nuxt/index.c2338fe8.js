@@ -1,0 +1,1 @@
+import{_ as t,c,d as e,a as o,o as s}from"./entry.b8bfe2f3.js";const a={},n=o("b",null,"Home",-1);function r(_,d){return s(),c("h1",null,[e("This is the "),n,e(" page")])}const i=t(a,[["render",r]]);export{i as default};
