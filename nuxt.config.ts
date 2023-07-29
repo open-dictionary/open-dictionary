@@ -1,10 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-const isProduction =  process.env.NODE_ENV == 'production';
+const generating =  process.env.NODE_ENV == 'generate';
 
 export default defineNuxtConfig({
-  sourcemap: !isProduction,
-  devtools: { enabled: !isProduction },
+  sourcemap: !generating,
+  devtools: { enabled: !generating },
   modules: ['@nuxtjs/tailwindcss'],
   css: ['@/assets/css/main.scss'],
   app: {

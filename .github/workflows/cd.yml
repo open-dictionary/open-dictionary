@@ -3,7 +3,8 @@ name: Nuxt Generate
 on: [push, pull_request]
 
 env:
-  NODE_ENV: production
+  NODE_ENV: generate
+  NODE_OPTIONS: --max_old_space_size=4096
 
 jobs:
   generate:
@@ -16,7 +17,7 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run git:submodules:add
-      - run: node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.mjs generate
+      - run: npm run generate
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
