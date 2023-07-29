@@ -3,7 +3,6 @@ name: Nuxt Generate
 on: [push, pull_request]
 
 env:
-  NODE_ENV: generate
   NODE_OPTIONS: --max_old_space_size=4096
 
 jobs:
@@ -12,9 +11,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm'
       - run: npm ci
       - run: npm run git:submodules:add
       - run: npm run generate
