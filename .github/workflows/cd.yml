@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 env:
   NODE_ENV: production
-  NODE_OPTIONS: --max_old_space_size=4096
 
 jobs:
   generate:
@@ -15,9 +14,9 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: 18
-      - run: npm i
+      - run: npm ci
       - run: npm run git:submodules:add
-      - run: npm run generate
+      - run: node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.mjs generate
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
