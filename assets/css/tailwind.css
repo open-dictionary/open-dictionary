@@ -12,16 +12,19 @@ main {
 
 h1 {
   @apply text-4xl;
+  text-transform: capitalize;
   margin: 12px 0 12px;
 }
 
 h2 {
   @apply text-2xl;
+  text-transform: capitalize;
   margin: 6px 0 6px;
 }
 
 h3 {
   @apply text-xl;
+  text-transform: capitalize;
 }
 
 @layer components {

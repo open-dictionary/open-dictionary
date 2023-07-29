@@ -6,7 +6,7 @@ const { data: words } = await useFetch(`/api/entries/${entry}`);
 <template>
   <h1>
     #{{ entry.toUpperCase() }}
-    <small>The entry</small>
+    <small>the entry</small>
   </h1>
   <hr />
   <section class="list-columns">
@@ -17,11 +17,3 @@ const { data: words } = await useFetch(`/api/entries/${entry}`);
     </ul>
   </section>
 </template>
-<style lang="scss" scoped>
-h1 {
-  small {
-    color: grey;
-    font-size: small;
-  }
-}
-</style>

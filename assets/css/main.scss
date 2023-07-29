@@ -3,6 +3,13 @@
   color: #be123c;
 }
 
+h1 {
+  small {
+    color: grey;
+    font-size: small;
+  }
+}
+
 .list-columns {
   ul {
     -webkit-column-count: 4;
