@@ -1,0 +1,19 @@
+.router-link-exact-active,
+.brand {
+  color: #be123c;
+}
+
+.list-columns {
+  ul {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+    padding-top: 35px;
+    text-align: justify;
+    li {
+      text-transform: capitalize;
+      margin-left: 2em;
+      text-decoration: underline;
+    }
+  }
+}

@@ -7,7 +7,7 @@
           <NuxtLink to="/">Home</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/dictionaries/en">Words</NuxtLink>
+          <NuxtLink to="/dictionaries/en">Entries</NuxtLink>
         </li>
         <li>
           <NuxtLink to="/docs">Docs</NuxtLink>
@@ -28,9 +28,3 @@
     </div>
   </footer>
 </template>
-<style lang="scss">
-.router-link-exact-active,
-.brand {
-  color: #be123c;
-}
-</style>
