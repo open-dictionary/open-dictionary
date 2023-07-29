@@ -1,6 +1,6 @@
 <template>
   <header class="shadow-sm bg-white">
-    <nav class="container mx-auto p-4 flex justify-between items-center ">
+    <nav class="container mx-auto p-4 flex justify-between items-center">
       <NuxtLink to="/" class="font-serif brand text-4xl">Open Dictionary</NuxtLink>
       <ul class="flex gap-4">
         <li>
@@ -22,9 +22,13 @@
   <footer class="shadow-sm bg-white">
     <div class="container mx-auto p-4">
       <div class="text-4xl font-serif">Open Dictionary</div>
-      <br>
-
+      <br />
       All rights are not reserved!
     </div>
   </footer>
 </template>
+<style scoped>
+main {
+  min-height: calc(100vh - 192px);
+}
+</style>

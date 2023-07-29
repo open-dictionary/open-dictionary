@@ -12,8 +12,7 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-      - shell: bash
-        run: git submodule add -f https://github.com/open-dictionary/english-dictionary.git node_modules/english-dictionary
+      - run: npm run git:submodules:add
       - run: npm run generate
       - uses: peaceiris/actions-gh-pages@v3
         with:

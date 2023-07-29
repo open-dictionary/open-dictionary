@@ -6,10 +6,6 @@ body {
   @apply bg-gray-50;
 }
 
-main {
-  min-height: calc(100vh - 192px);
-}
-
 h1 {
   @apply text-4xl;
   text-transform: capitalize;

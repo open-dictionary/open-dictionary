@@ -7,7 +7,9 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lodash": "^4.17.21",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "git:submodules:add": "git submodule add -f https://github.com/open-dictionary/english-dictionary.git node_modules/english-dictionary",
+    "git:submodules:update": "git submodule foreach git pull origin master"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
