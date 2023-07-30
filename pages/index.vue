@@ -5,12 +5,12 @@ definePageMeta({
 </script>
 <template>
   <section class="text-center">
-    <h1 class="text-9xl font-serif text-center">
+    <h1 class="text-6xl sm:text-8xl md:text-9xl font-serif text-center">
       Open
       <br>
       Dictionary
     </h1>
-    <p class="text-2xl font-thin">An open source collaborative dictionary</p>
+    <p class="md:text-2xl font-thin">An open source collaborative dictionary</p>
     <SearchInput class="mx-auto lg:w-6/12 md:w-full" />
     <nav class="mx-auto p-4 flex justify-center items-center">
       <ul class="flex gap-4">

@@ -19,14 +19,7 @@
         @click="redirect(item)"
         class="w-full flex p-3 pl-4 items-center hover:bg-gray-300 rounded-lg cursor-pointer"
       >
-        <div class="mr-4">
-          <div class="h-9 w-9 rounded-sm flex items-center justify-center text-3xl">
-            <i class="material-icons">chevron_right</i>
-          </div>
-        </div>
-        <div>
-          <div class="font-bold text-lg">{{ item }}</div>
-        </div>
+        <div class="font-bold text-lg capitalize">{{ item }}</div>
       </div>
     </div>
   </div>
@@ -41,7 +34,7 @@ export default defineComponent({
     async onInput({ target }: Event) {
       const value = (target as HTMLInputElement).value;
       if (value.length > 1) {
-        const entry = value.split('').slice(0, 2).join('/');
+        const entry = value.toLowerCase().split('').slice(0, 2).join('/');
         const { data } = await useFetch<string>(
           `https://raw.githubusercontent.com/open-dictionary/english-dictionary/master/${entry}/index.csv`,
         );

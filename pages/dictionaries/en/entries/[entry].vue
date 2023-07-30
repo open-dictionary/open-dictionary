@@ -9,9 +9,9 @@ const { data: words } = await useFetch(`/api/entries/${entry}`);
     <small>the entry</small>
   </h1>
   <hr />
-  <section class="list-columns">
-    <ul class="list-disc mb-12">
-      <li v-for="word of words">
+  <section>
+    <ul class="list-disc columns-2 md:columns-3 lg:columns-4 pt-8">
+      <li v-for="word of words" class="ml-4 capitalize">
         <NuxtLink :to="`/dictionaries/en/words/${word}`">{{ word }}</NuxtLink>
       </li>
     </ul>

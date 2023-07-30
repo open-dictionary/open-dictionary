@@ -1,7 +1,7 @@
 <template>
   <header class="shadow-sm bg-white">
     <nav class="container mx-auto p-4 flex justify-between items-center">
-      <NuxtLink to="/" class="font-serif brand text-4xl">Open Dictionary</NuxtLink>
+      <NuxtLink to="/" class="font-serif brand text-2xl md:text-4xl">Open Dictionary</NuxtLink>
       <ul class="flex gap-4">
         <li>
           <NuxtLink to="/">Home</NuxtLink>
