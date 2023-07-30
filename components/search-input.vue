@@ -29,9 +29,14 @@ export default defineComponent({
   data: () => ({
     items: [] as string[],
     value: '',
+    loading: false,
   }),
   methods: {
     async onInput({ target }: Event) {
+      while (this.loading) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+      this.loading = true;
       const value = (target as HTMLInputElement).value;
       if (value.length > 1) {
         const entry = value.toLowerCase().split('').slice(0, 2).join('/');
@@ -41,6 +46,7 @@ export default defineComponent({
         const index = data.value?.split('\n') as string[];
         this.items = index.filter((item) => item.startsWith(value)).slice(0, 4);
       }
+      this.loading = false;
     },
     redirect(word: string) {
       this.value = word;
