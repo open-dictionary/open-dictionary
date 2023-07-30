@@ -1,13 +1,26 @@
 <script setup lang="ts">
+import { getContributors } from '@/utils/github';
 import { languages } from '@/utils/languages';
 const route = useRoute();
 const word = route.params.word as string;
 const repository = 'open-dictionary/english-dictionary';
 const branch = 'master';
-const directory = `${branch}/${word.split('').slice(0, 2).join('/')}/${word}`;
-const { data: dictionaries } = await useFetch(`/api/words/${word}`);
+const directory = `${word.split('').slice(0, 2).join('/')}/${word}`;
+const { data } = await useFetch(`/api/words/${word}`);
+const dictionaries = await Promise.all(
+  data.value?.map(async (item) => {
+    const contributors = await getContributors(
+      repository,
+      `${directory}/definitions.${item.language}.yaml`,
+    );
+    return {
+      ...item,
+      contributors,
+    };
+  }) || [],
+);
 function generateURL(language: string) {
-  return `https://github.com/${repository}/blob/${directory}/definitions.${language}.yaml`;
+  return `https://github.com/${repository}/blob/${branch}/${directory}/definitions.${language}.yaml`;
 }
 </script>
 <template>
@@ -15,14 +28,18 @@ function generateURL(language: string) {
   <hr />
   <br />
   <!-- @vue-skip -->
-  <section v-for="{ language, items } in dictionaries" :dir="languages[language].dir" class="mb-8">
+  <section
+    v-for="{ language, items, contributors } in dictionaries"
+    :dir="languages[language].dir"
+    class="mb-8"
+  >
     <header class="flex items-center justify-between">
       <h2>
         <!-- @vue-skip -->
         <b>{{ languages[language].name }}</b>
       </h2>
       <github-button
-        :href="`https://github.com/${repository}/edit/${directory}/definitions.${language}.yaml`"
+        :href="`https://github.com/${repository}/edit/${branch}/${directory}/definitions.${language}.yaml`"
         title="Edit on Github"
       >
       </github-button>
@@ -37,10 +54,14 @@ function generateURL(language: string) {
       </li>
     </ol>
     <div dir="ltr">
-      <h3 class="mb-1">Source:</h3>
+      <h3 class="mb-4">Source:</h3>
       <code-block>
         <a :href="generateURL(language)" target="_blank">{{ generateURL(language) }} </a>
       </code-block>
+      <h3 class="mb-4 mt-4">Contributors:</h3>
+      <a v-for="{ name, html_url, avatar_url } of contributors" :href="html_url" target="_blank">
+        <img :src="avatar_url" :alt="name" class="w-12 rounded-full shadow-md m-2 inline" />
+      </a>
     </div>
   </section>
 </template>
