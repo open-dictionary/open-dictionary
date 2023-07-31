@@ -59,9 +59,12 @@ function generateURL(language: string) {
         <a :href="generateURL(language)" target="_blank">{{ generateURL(language) }} </a>
       </code-block>
       <h3 class="mb-4 mt-4">Contributors:</h3>
-      <a v-for="{ name, html_url, avatar_url } of contributors" :href="html_url" target="_blank">
-        <img :src="avatar_url" :alt="name" class="w-12 rounded-full shadow-md m-2 inline" />
-      </a>
+      <ClientOnly fallback-tag="span" fallback="loading ...">
+        <GithubContributors
+          :repository="repository"
+          :path="`${directory}/definitions.${language}.yaml`"
+        />
+      </ClientOnly>
     </div>
   </section>
 </template>
