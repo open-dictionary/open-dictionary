@@ -1,24 +1,11 @@
 <script setup lang="ts">
-import { getContributors } from '@/utils/github';
 import { languages } from '@/utils/languages';
 const route = useRoute();
 const word = route.params.word as string;
 const repository = 'open-dictionary/english-dictionary';
 const branch = 'master';
 const directory = `${word.split('').slice(0, 2).join('/')}/${word}`;
-const { data } = await useFetch(`/api/words/${word}`);
-const dictionaries = await Promise.all(
-  data.value?.map(async (item) => {
-    const contributors = await getContributors(
-      repository,
-      `${directory}/definitions.${item.language}.yaml`,
-    );
-    return {
-      ...item,
-      contributors,
-    };
-  }) || [],
-);
+const { data: dictionaries } = await useFetch(`/api/words/${word}`);
 function generateURL(language: string) {
   return `https://github.com/${repository}/blob/${branch}/${directory}/definitions.${language}.yaml`;
 }
