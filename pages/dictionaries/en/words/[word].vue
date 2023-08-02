@@ -7,7 +7,7 @@ const branch = 'master';
 const directory = `${word.split('').slice(0, 2).join('/')}/${word}`;
 const { data: dictionaries } = await useFetch(`/api/words/${word}`);
 function generateURL(language: string) {
-  return `https://github.com/${repository}/blob/${branch}/${directory}/definitions.${language}.yaml`;
+  return `https://github.com/${repository}/blob/${branch}/${directory}/${language}.json`;
 }
 </script>
 <template>
@@ -16,7 +16,7 @@ function generateURL(language: string) {
   <br />
   <!-- @vue-skip -->
   <section
-    v-for="{ language, items, contributors } in dictionaries"
+    v-for="{ language, content } in dictionaries"
     :dir="languages[language].dir"
     class="mb-8"
   >
@@ -26,14 +26,14 @@ function generateURL(language: string) {
         <b>{{ languages[language].name }}</b>
       </h2>
       <github-button
-        :href="`https://github.com/${repository}/edit/${branch}/${directory}/definitions.${language}.yaml`"
+        :href="`https://github.com/${repository}/edit/${branch}/${directory}/${language}.json`"
         title="Edit on Github"
       >
       </github-button>
     </header>
     <hr />
     <ol class="list-decimal">
-      <li v-for="{ definition, pos } in items">
+      <li v-for="{ definition, pos } in content.definitions">
         <ul>
           <li>{{ definition }}</li>
           <li v-if="pos"><b>Pos: </b>{{ pos }}</li>

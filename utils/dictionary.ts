@@ -2,7 +2,11 @@ import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 // @ts-ignore
 import _ from 'lodash';
-import YAML from 'js-yaml';
+
+export interface Entry {
+  word: string;
+  definitions: { definition: string; pos: string }[];
+}
 
 const DICTIONARY_PATH = join(process.cwd(), 'node_modules/english-dictionary');
 const wordsMapMap = new Map<string, boolean>();
@@ -23,14 +27,12 @@ export function getWords(entry: string) {
 
 export function getDefinitions(word: string) {
   const path = join(DICTIONARY_PATH, word.split('').slice(0, 2).join('/'), word);
-  const definitionFiles = readdirSync(path).filter((item) => item.endsWith('.yaml'));
+  const definitionFiles = readdirSync(path).filter((item) => item.endsWith('.json'));
   const definitions = [];
   for (const filename of definitionFiles) {
-    const items: { definition: string; pos: string }[] = YAML.load(
-      readFileSync(join(path, filename), 'utf-8'),
-    ) as any;
-    const language = filename.replace('definitions.', '').replace('.yaml', '');
-    definitions.push({ language, items });
+    const content: Entry = JSON.parse(readFileSync(join(path, filename), 'utf-8')) as any;
+    const language = filename.replace('.json', '');
+    definitions.push({ language, content });
   }
   return definitions;
 }

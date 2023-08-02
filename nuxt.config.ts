@@ -4,7 +4,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 export default defineNuxtConfig({
   sourcemap: !isProduction,
-  devtools: { enabled: !isProduction },
+  devtools: { enabled: false },
   modules: ['@nuxtjs/tailwindcss'],
   css: ['@/assets/css/main.scss'],
   app: {
