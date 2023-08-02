@@ -2,7 +2,7 @@
   <header class="shadow-sm bg-white">
     <nav class="container mx-auto p-4 flex justify-between items-center">
       <NuxtLink to="/" class="font-serif brand text-2xl md:text-4xl">Open Dictionary</NuxtLink>
-      <ul class="flex gap-4">
+      <ul class="flex gap-4 items-center">
         <li>
           <NuxtLink to="/">Home</NuxtLink>
         </li>
@@ -10,7 +10,7 @@
           <NuxtLink to="/dictionaries/en">Entries</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/docs">Docs</NuxtLink>
+          <GithubButton href="https://github.com/open-dictionary" title="Github" />
         </li>
       </ul>
     </nav>
