@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-16 font-serif">
+  <div class="mt-16 font-serif relative">
     <div class="bg-white w-full h-16 rounded-xl mb-3 shadow-lg p-2">
       <input
         v-model="value"
@@ -11,7 +11,7 @@
     </div>
     <div
       v-if="value && items.length > 0"
-      class="bg-white w-full rounded-xl shadow-xl overflow-hidden p-1"
+      class="bg-white w-full rounded-xl shadow-xl overflow-hidden p-1 absolute z-50"
     >
       <!-- items -->
       <div
@@ -44,7 +44,7 @@ export default defineComponent({
           `https://raw.githubusercontent.com/open-dictionary/english-dictionary/master/${entry}/index.csv`,
         );
         const index = data.value?.split('\n') as string[];
-        this.items = index.filter((item) => item.startsWith(value)).slice(0, 4);
+        this.items = index.filter((item) => item.startsWith(value)).slice(0, 2);
       }
       this.loading = false;
     },
